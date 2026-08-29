@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  --gold: #b99a5a;
+  --gold-light: #e2c982;
+  --cream: #f6f0e2;
+  --black: #11100e;
+  --brown: #211d16;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--cream);
+  font-family: Montserrat, sans-serif;
+  overflow-x: hidden;
+}
+
+.page { min-height: 100vh; }
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 35px 20px;
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(185,154,90,.24), transparent 32%),
+    linear-gradient(145deg, #0d0c0a, #262016 50%, #0d0c0a);
+  overflow: hidden;
+}
+
+.hero::before, .hero::after {
+  content: "✦";
+  position: absolute;
+  color: var(--gold-light);
+  opacity: .5;
+  font-size: 28px;
+}
+.hero::before { top: 15%; left: 10%; }
+.hero::after { bottom: 15%; right: 10%; }
+
+.eyebrow {
+  letter-spacing: 4px;
+  font-size: 12px;
+  color: var(--gold-light);
+  margin-bottom: 15px;
+}
+
+h1, h2 {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(42px, 11vw, 90px);
+  letter-spacing: 5px;
+  color: #e0c987;
+  text-shadow: 0 0 25px rgba(226,201,130,.25);
+}
+
+.age {
+  width: 145px;
+  height: 145px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 22px 0;
+  font: 700 90px/1 "Cormorant Garamond", serif;
+  color: var(--cream);
+  box-shadow: 0 0 0 8px rgba(185,154,90,.06), 0 0 35px rgba(185,154,90,.18);
+}
+
+.subtitle {
+  max-width: 600px;
+  line-height: 1.7;
+  color: #d9d0be;
+}
+
+button {
+  margin-top: 25px;
+  border: 1px solid var(--gold-light);
+  background: linear-gradient(135deg, #9e8045, #d7bd7a);
+  color: #17130d;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 16px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 10px 35px rgba(0,0,0,.35);
+  transition: transform .25s, box-shadow .25s;
+}
+button:hover { transform: translateY(-3px) scale(1.02); }
+
+.hint { font-size: 11px; opacity: .55; margin-top: 12px; }
+
+.content {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(185,154,90,.14), transparent 35%),
+    #17140f;
+  padding: 70px 18px;
+}
+
+.hidden { display: none; }
+
+.card, .final {
+  max-width: 800px;
+  margin: 0 auto 65px;
+  padding: clamp(28px, 6vw, 60px);
+  border: 1px solid rgba(226,201,130,.35);
+  border-radius: 24px;
+  background: rgba(31,27,20,.78);
+  box-shadow: 0 20px 70px rgba(0,0,0,.3);
+  text-align: center;
+}
+
+.small-title { color: var(--gold-light); letter-spacing: 3px; font-size: 12px; }
+.card h2, .final h2 { font-size: clamp(34px, 7vw, 58px); color: #e3cc91; margin: 10px 0 25px; }
+.card p, .final p { line-height: 1.9; color: #e1d8c5; }
+
+.gallery {
+  max-width: 1000px;
+  margin: 0 auto 70px;
+  text-align: center;
+}
+.gallery h2 { font-size: 44px; color: #dfc98d; }
+.instruction { color: #aaa18f; font-size: 13px; }
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 25px;
+}
+.photos img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(226,201,130,.35);
+  background: #2a251c;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.photos img.placeholder {
+  opacity: .45;
+  filter: grayscale(1);
+}
+
+.signature { margin-top: 35px; color: #dfc98d !important; }
+.sparkle { font-size: 45px; }
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  overflow: hidden;
+}
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 8px;
+  height: 14px;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to { transform: translate3d(var(--x), 110vh, 0) rotate(720deg); }
+}
+
+@media (max-width: 600px) {
+  .photos { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .content { padding-top: 45px; }
+}
